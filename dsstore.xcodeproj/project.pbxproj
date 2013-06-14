@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E217C199176AADAF006EF609 /* DSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = E217C198176AADAF006EF609 /* DSChunk.m */; };
+		E217C19D176AB057006EF609 /* DSChunkSection.m in Sources */ = {isa = PBXBuildFile; fileRef = E217C19C176AB057006EF609 /* DSChunkSection.m */; };
+		E217C1A0176AC3B5006EF609 /* DSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E217C19F176AC3B5006EF609 /* DSStore.m */; };
 		E23B40FB176A66C100C295EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E23B40FA176A66C100C295EC /* Foundation.framework */; };
 		E23B40FE176A66C100C295EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E23B40FD176A66C100C295EC /* main.m */; };
 		E23B4102176A66C100C295EC /* dsstore.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E23B4101176A66C100C295EC /* dsstore.1 */; };
@@ -26,6 +29,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E217C197176AADAF006EF609 /* DSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChunk.h; sourceTree = "<group>"; };
+		E217C198176AADAF006EF609 /* DSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChunk.m; sourceTree = "<group>"; };
+		E217C19A176AAE7D006EF609 /* DSChunkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChunkUtils.h; sourceTree = "<group>"; };
+		E217C19B176AB057006EF609 /* DSChunkSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChunkSection.h; sourceTree = "<group>"; };
+		E217C19C176AB057006EF609 /* DSChunkSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChunkSection.m; sourceTree = "<group>"; };
+		E217C19E176AC3B5006EF609 /* DSStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSStore.h; sourceTree = "<group>"; };
+		E217C19F176AC3B5006EF609 /* DSStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSStore.m; sourceTree = "<group>"; };
 		E23B40F7176A66C100C295EC /* dsstore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dsstore; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23B40FA176A66C100C295EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E23B40FD176A66C100C295EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,6 +55,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E217C1A1176AC5F6006EF609 /* DSStore */ = {
+			isa = PBXGroup;
+			children = (
+				E217C19E176AC3B5006EF609 /* DSStore.h */,
+				E217C19F176AC3B5006EF609 /* DSStore.m */,
+				E217C197176AADAF006EF609 /* DSChunk.h */,
+				E217C198176AADAF006EF609 /* DSChunk.m */,
+				E217C19A176AAE7D006EF609 /* DSChunkUtils.h */,
+				E217C19B176AB057006EF609 /* DSChunkSection.h */,
+				E217C19C176AB057006EF609 /* DSChunkSection.m */,
+			);
+			name = DSStore;
+			sourceTree = "<group>";
+		};
 		E23B40EE176A66C100C295EC = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +97,7 @@
 		E23B40FC176A66C100C295EC /* dsstore */ = {
 			isa = PBXGroup;
 			children = (
+				E217C1A1176AC5F6006EF609 /* DSStore */,
 				E23B40FD176A66C100C295EC /* main.m */,
 				E23B4101176A66C100C295EC /* dsstore.1 */,
 				E23B40FF176A66C100C295EC /* Supporting Files */,
@@ -140,6 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23B40FE176A66C100C295EC /* main.m in Sources */,
+				E217C199176AADAF006EF609 /* DSChunk.m in Sources */,
+				E217C19D176AB057006EF609 /* DSChunkSection.m in Sources */,
+				E217C1A0176AC3B5006EF609 /* DSStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +237,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dsstore/dsstore-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 			};
 			name = Debug;
 		};
@@ -218,6 +247,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dsstore/dsstore-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 			};
 			name = Release;
 		};
@@ -240,6 +270,7 @@
 				E23B4107176A66C100C295EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
