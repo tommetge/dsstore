@@ -19,13 +19,14 @@
     return [[[DSChunkSection alloc] initWithData:data andSection:section] autorelease];
 }
 
--(id)initWithData:(NSData*)data andSection:(int)section
+-(instancetype)initWithData:(NSData*)data andSection:(int)section
 {
     self = [super init];
     if (self) {
         self.data = data;
         _section_id = section;
         _chunks = nil;
+        _offset = 0;
     }
     return self;
 }
@@ -33,20 +34,22 @@
 -(int)parse
 {
     unsigned long length = [self.data length];
-    const unsigned char *bytes=[self.data bytes];
+    const unsigned char *bytes = [self.data bytes];
 
-    if(length<24+self.section_id*4) return NO; // Truncated file.
+    _offset_location = 20 + self.section_id * 4;
+    if (length < _offset_location + 4) return NO; // Truncated file.
 
-    int offs = DSGetUInt32(bytes + 20 + self.section_id * 4);
-    if (offs == 0) return NO; // No more chunk sections, parsing is done.
+    _offset = DSGetUInt32(bytes + _offset_location);
 
-    offs &= ~0x0f; // Chunk sections are 16-byte aligned, but the offsets are not for some reason.
+    if (_offset == 0) return NO; // No more chunk sections, parsing is done.
 
-    if(length<offs+12) return NO; // Truncated file.
+    _offset &= ~0x0f; // Chunk sections are 16-byte aligned, but the offsets are not for some reason.
 
-    int val2 = DSGetUInt32(bytes + offs + 4);
-    int numchunks = DSGetUInt32(bytes + offs + 8);
-    int chunk_offs = offs + 12;
+    if (length < _offset + 12) return NO; // Truncated file.
+
+    int val2 = DSGetUInt32(bytes + _offset + 4);
+    int numchunks = DSGetUInt32(bytes + _offset + 8);
+    int chunk_offs = _offset + 12;
 
     NSMutableArray *parsedChunks = [NSMutableArray arrayWithCapacity:numchunks];
 

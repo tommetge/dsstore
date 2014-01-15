@@ -12,6 +12,8 @@
     NSData* _data;
     NSMutableArray* _chunks;
     int _section_id;
+    int _offset_location;
+    int _offset;
 }
 
 @property (retain) NSData* data;
@@ -19,7 +21,7 @@
 @property (readonly) int section_id;
 
 +(DSChunkSection*)chunkSectionWithData:(NSData*)data andSection:(int)section;
--(id)initWithData:(NSData*)data andSection:(int)section;
+-(instancetype)initWithData:(NSData*)data andSection:(int)section;
 -(int)parse;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DSAllocator.h"
 #import "DSChunkSection.h"
 #import "DSChunk.h"
 #import "DSStore.h"
@@ -34,9 +35,10 @@ int main(int argc, const char * argv[])
             return 1;
         }
 
+        NSError* err = nil;
         DSStore *store = [DSStore storeWithData:data];
-        if (![store parse]) {
-            NSLog(@"Failed to parse file");
+        if (![store parseWithError:&err]) {
+            NSLog(@"Failed to parse file: %@", [err localizedDescription]);
             return 1;
         }
 

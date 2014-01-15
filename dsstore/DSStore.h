@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DSStore : NSObject {
-    NSData* _data;
-    NSMutableArray* _sections;
-}
+#import "DSHeader.h"
+
+@interface DSStore : NSObject
 
 @property (readonly) NSArray* sections;
-@property (retain) NSData* data;
+@property (nonatomic, retain) NSData* data;
+@property (nonatomic, retain) DSHeader* header;
 
 +(DSStore*)storeWithData:(NSData*)data;
 -(id)initWithData:(NSData*)data;
 
--(BOOL)parse;
+-(BOOL)parseWithError:(NSError**)err;
 
 @end

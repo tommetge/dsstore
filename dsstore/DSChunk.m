@@ -19,7 +19,7 @@
     return [[[DSChunk alloc] initWithData:data atOffset:offset] autorelease];
 }
 
--(id)initWithData:(NSData *)data atOffset:(int)offset
+-(instancetype)initWithData:(NSData *)data atOffset:(int)offset
 {
     self = [super init];
     if (self) {

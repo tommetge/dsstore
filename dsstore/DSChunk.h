@@ -25,7 +25,7 @@
 @property (assign) id value;
 
 +(DSChunk*)chunkWithData:(NSData*)data atOffset:(int)offset;
--(id)initWithData:(NSData*)data atOffset:(int)offset;
+-(instancetype)initWithData:(NSData*)data atOffset:(int)offset;
 -(BOOL)parse;
 
 @end

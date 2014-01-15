@@ -13,6 +13,8 @@
 		E23B40FB176A66C100C295EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E23B40FA176A66C100C295EC /* Foundation.framework */; };
 		E23B40FE176A66C100C295EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E23B40FD176A66C100C295EC /* main.m */; };
 		E23B4102176A66C100C295EC /* dsstore.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E23B4101176A66C100C295EC /* dsstore.1 */; };
+		E2EF193E188701FB00400BA1 /* DSAllocator.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EF193D188701FB00400BA1 /* DSAllocator.m */; };
+		E2EF19411887030500400BA1 /* DSHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EF19401887030500400BA1 /* DSHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +43,10 @@
 		E23B40FD176A66C100C295EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E23B4100176A66C100C295EC /* dsstore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dsstore-Prefix.pch"; sourceTree = "<group>"; };
 		E23B4101176A66C100C295EC /* dsstore.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = dsstore.1; sourceTree = "<group>"; };
+		E2EF193C188701FB00400BA1 /* DSAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSAllocator.h; sourceTree = "<group>"; };
+		E2EF193D188701FB00400BA1 /* DSAllocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSAllocator.m; sourceTree = "<group>"; };
+		E2EF193F1887030500400BA1 /* DSHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSHeader.h; sourceTree = "<group>"; };
+		E2EF19401887030500400BA1 /* DSHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +66,15 @@
 			children = (
 				E217C19E176AC3B5006EF609 /* DSStore.h */,
 				E217C19F176AC3B5006EF609 /* DSStore.m */,
+				E2EF193C188701FB00400BA1 /* DSAllocator.h */,
+				E2EF193D188701FB00400BA1 /* DSAllocator.m */,
+				E217C19B176AB057006EF609 /* DSChunkSection.h */,
+				E217C19C176AB057006EF609 /* DSChunkSection.m */,
 				E217C197176AADAF006EF609 /* DSChunk.h */,
 				E217C198176AADAF006EF609 /* DSChunk.m */,
 				E217C19A176AAE7D006EF609 /* DSChunkUtils.h */,
-				E217C19B176AB057006EF609 /* DSChunkSection.h */,
-				E217C19C176AB057006EF609 /* DSChunkSection.m */,
+				E2EF193F1887030500400BA1 /* DSHeader.h */,
+				E2EF19401887030500400BA1 /* DSHeader.m */,
 			);
 			name = DSStore;
 			sourceTree = "<group>";
@@ -139,7 +149,7 @@
 		E23B40EF176A66C100C295EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Flying Paper Software";
 			};
 			buildConfigurationList = E23B40F2176A66C100C295EC /* Build configuration list for PBXProject "dsstore" */;
@@ -165,6 +175,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23B40FE176A66C100C295EC /* main.m in Sources */,
+				E2EF19411887030500400BA1 /* DSHeader.m in Sources */,
+				E2EF193E188701FB00400BA1 /* DSAllocator.m in Sources */,
 				E217C199176AADAF006EF609 /* DSChunk.m in Sources */,
 				E217C19D176AB057006EF609 /* DSChunkSection.m in Sources */,
 				E217C1A0176AC3B5006EF609 /* DSStore.m in Sources */,
@@ -178,7 +190,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -210,7 +221,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;

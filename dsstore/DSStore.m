@@ -7,42 +7,51 @@
 //
 
 #import "DSStore.h"
-#import "DSChunkUtils.h"
 #import "DSChunkSection.h"
-#import "DSChunk.h"
+
+@interface DSStore () {
+    NSData* _data;
+    NSMutableArray* _sections;
+}
+
+@end
 
 @implementation DSStore
 
-@synthesize data = _data, sections;
+@synthesize data = _data, sections, header;
 
 +(DSStore*)storeWithData:(NSData*)data
 {
     return [[[DSStore alloc] initWithData:data] autorelease];
 }
 
--(id)initWithData:(NSData*)data
+-(instancetype)initWithData:(NSData*)data
+{
+    self = [self init];
+    if (self) {
+        self.data = data;
+    }
+    return self;
+}
+
+// For creating a new .DS_Store file
+-(instancetype)init
 {
     self = [super init];
     if (self) {
-        self.data = data;
+        self.header = [[[DSHeader alloc] init] autorelease];
         _sections = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
--(BOOL)parse
+-(BOOL)parseWithError:(NSError **)err
 {
-    const unsigned char *bytes=[self.data bytes];
-	double length=[self.data length];
-	if(length<20) return NO; // Too short for the header.
+    if (![self.header parseData:self.data withError:err]) {  // Invalid header
+        return NO;
+    }
 
-	int ver=DSGetUInt32(bytes);
-	if(ver!=1) return NO; // Unsupported version (probably).
-
-	int type=DSGetUInt32(bytes+4);
-	if(type!='Bud1') return NO; // Unsupported filetype.
-
-    for(int n=0;;n++)
+    for(int n=0; ; n++)
 	{
         DSChunkSection* section = [DSChunkSection chunkSectionWithData:self.data andSection:n];
         [_sections addObject:section];
