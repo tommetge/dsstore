@@ -76,6 +76,8 @@
             if(length < self.offset + 4 + len) return NO; // Truncated file.
             switch (attr) {
                 case 'bwsp':
+                case 'glvp':
+                case 'lsvC':
                 case 'lsvp':
                 case 'lsvP':
                 case 'icvp':
